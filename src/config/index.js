@@ -3,8 +3,8 @@
 // export const BaseURL = 'http://localhost:5173' // locals URL
 
 // Production  ( Un comment both two line for the production)
-  export const BaseURL = 'https://test.exowa.click' // live URL
-  export const apiUrl = 'https://exowa-backend.onrender.com' // live URL
+  export const BaseURL = 'https://text-user-gemini-key.netlify.app' // live URL
+  export const apiUrl = 'https://exowabackendwithusergeminikey.onrender.com' // live URL
 
 
 
