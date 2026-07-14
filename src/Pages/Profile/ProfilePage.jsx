@@ -18,7 +18,7 @@ const ProfilePage = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/user/profile`,
+        `${import.meta.env.VITE_API_URL}/users/profile`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ const ProfilePage = () => {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `${import.meta.env.VITE_API_URL}/user/profile`,
+        `${import.meta.env.VITE_API_URL}/users/profile`,
         {
           geminiApiKey,
         },
