@@ -3,6 +3,7 @@ import "./index.css";
 
 import { RouterProvider, createHashRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import ProfilePage from "./Pages/Profile/ProfilePage";
 
 import Layout from "./Pages/Layout";
 import Login from "./Pages/Auth/Login";
@@ -43,6 +44,10 @@ const router = createHashRouter([
           {
             path: "papers",
             element: <Paper />,
+          },
+          {
+            path: "profile",
+            element: <ProfilePage />,
           },
           {
             path: "users",
