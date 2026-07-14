@@ -8,9 +8,11 @@ import UIAvatar from "../Elements/Avatar";
 import UIDropdown from "../Elements/Dropdown";
 import { handleLogout } from "@/slice/authSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export function TopBar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const options = [
     {
@@ -21,17 +23,27 @@ export function TopBar() {
     {
       label: "Logout",
       value: "logout",
-      icon: <ArrowRightEndOnRectangleIcon color="stroke-red-500" width={20} />,
+      icon: (
+        <ArrowRightEndOnRectangleIcon
+          color="stroke-red-500"
+          width={20}
+        />
+      ),
       className: "text-red-500 hover:text-red-600",
     },
   ];
 
-  const handleOption = async (val) => {
+  const handleOption = async (val: string) => {
+    if (val === "profile") {
+      navigate("/profile");
+      return;
+    }
+
     if (val === "logout") {
       try {
         dispatch(handleLogout());
       } catch (error) {
-        console.error("Failed to logout: ", error);
+        console.error("Failed to logout:", error);
       }
     }
   };
@@ -44,12 +56,14 @@ export function TopBar() {
             <img className="h-[24px]" src={Logo} alt="Logo" />
           </div>
         </nav>
+
         <div className="flex w-full items-center gap-2 md:ml-auto md:gap-2 lg:gap-2">
           <form className="ml-auto flex-1">
-            <div className="flex hidden sm:block"></div>
+            <div className="hidden sm:block"></div>
           </form>
+
           <UIDropdown
-            className="p-0 md:block hidden"
+            className="hidden p-0 md:block"
             options={options}
             customName={<UIAvatar />}
             onChange={handleOption}
